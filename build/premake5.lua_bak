@@ -63,7 +63,7 @@ function gmake_common()
             defines { "HAS_QT=1" }
             links { "QtCore.framework" }
             includedirs { "/usr/local/opt/qt5/include" }
-            linkoptions { "-F /usr/local/opt/qt5/lib" }
+--            linkoptions { "-F /usr/local/opt/qt5/lib" }
         end
 
         -- Temp fix for OSX brew + V8 include path issue
@@ -100,8 +100,8 @@ solution "benchmark"
             "../thirdparty/ujson4c/3rdparty/",
             "../thirdparty/pjson/inc/",
   			"../thirdparty/udp-json-parser/",
-            "../thirdparty/facil.io/lib/facil/core/types",
-            "../thirdparty/facil.io/lib/facil/core/types/fiobj",
+--            "../thirdparty/facil.io/lib/facil/core/types",
+--            "../thirdparty/facil.io/lib/facil/core/types/fiobj",
         }
 
 		files {
@@ -112,6 +112,7 @@ solution "benchmark"
 
 		copyfiles("../thirdparty/include/yajl", "../thirdparty/yajl/src/api/*.h")
 
+		buildoptions "-std=c99"
 	project "nativejson"
 		kind "ConsoleApp"
 
@@ -130,12 +131,12 @@ solution "benchmark"
             "../thirdparty/include/jeayeson/include/dummy",
   			"../thirdparty/jvar/include",
             "../thirdparty/pjson/inc",
-            -- "../thirdparty/ULib/include",
-            "../thirdparty/facil.io/lib/facil/core/types",
-            "../thirdparty/facil.io/lib/facil/core/types/fiobj",
+            "../thirdparty/ULib/include",
+--            "../thirdparty/facil.io/lib/facil/core/types",
+--            "../thirdparty/facil.io/lib/facil/core/types/fiobj",
         }
 
-        -- linkoptions { "../../thirdparty/ULib/src/ulib/.libs/libulib.a" }
+--      linkoptions { "../../thirdparty/ULib/src/ulib/.libs/libulib.a" }
 
 		files {
 			"../src/*.h",
@@ -188,9 +189,9 @@ solution "jsonstat"
         "../thirdparty/include/jeayeson/include/dummy",
         "../thirdparty/jvar/include",
         "../thirdparty/pjson/inc",
-        -- "../thirdparty/ULib/include",
-        "../thirdparty/facil.io/lib/facil/core/types",
-        "../thirdparty/facil.io/lib/facil/core/types/fiobj",
+        "../thirdparty/ULib/include",
+--        "../thirdparty/facil.io/lib/facil/core/types",
+--        "../thirdparty/facil.io/lib/facil/core/types/fiobj",
     }
 
     configuration "release"
@@ -211,8 +212,8 @@ solution "jsonstat"
             "../thirdparty/include/",
             "../thirdparty/ujson4c/3rdparty/",
   			"../thirdparty/udp-json-parser/",
-            "../thirdparty/facil.io/lib/facil/core/types",
-            "../thirdparty/facil.io/lib/facil/core/types/fiobj",
+--            "../thirdparty/facil.io/lib/facil/core/types",
+--            "../thirdparty/facil.io/lib/facil/core/types/fiobj",
         }
 
 		files {
@@ -236,7 +237,7 @@ solution "jsonstat"
 			links "jsonclibs2"
             setTargetObjDir("../bin/jsonstat")
 
-            -- linkoptions { "../../thirdparty/ULib/src/ulib/.libs/libulib.a" }
+--      linkoptions { "../../thirdparty/ULib/src/ulib/.libs/libulib.a" }
 
 			configuration "gmake"
 				buildoptions "-std=c++14"
